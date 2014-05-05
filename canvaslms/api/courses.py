@@ -17,7 +17,6 @@
 # along with python3-canvaslms-api. If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
 
-
 import canvaslms.api
 import canvaslms.api.util
 
@@ -65,7 +64,7 @@ Get all user objects for this course.
 
 Arguments:
   * course_id
-  * enrollment_type: Optional. "teacher"|"student"|"ta"|"observer"|"designer" 
+  * enrollment_type: Optional. "teacher"|"student"|"ta"|"observer"|"designer"
   * enrollment_role
   * include: Must be a list.  Possible values are: ['email', 'enrollments', 'locked', 'avatar_url']
   * user_id
@@ -146,7 +145,7 @@ Arguments:
         assignment_ids_str = None
         if assignment_ids:
             assignment_ids_str = canvaslms.api.util.createGetArray('assignment_ids', assignment_ids)
-        
+
         include_str = '&include[]=total_scores'
         param_str = '?per_page=1000{}{}{}'.format(student_ids_str, assignment_ids_str, include_str)
         objs = self._connector.allPages('courses/{}/students/submissions{}'.format(course_id, param_str))

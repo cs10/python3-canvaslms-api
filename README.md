@@ -22,7 +22,8 @@ These examples assume that you have copied the canvaslms folder to a location th
 
 ### Import into existing project
 ```python
-import canvaslms.api
+
+import canvaslms.api as api
 
 # Get the authorization token from a file (Or from any other source.
 #   We just need a string containing the authorization token.
@@ -31,14 +32,14 @@ authToken = api.getAuthTokenFromFile('path/to/auth/token/file.txt')
 # Create our API object, giving the name of the server running the
 #   instance of Canvas and the authorization token that we'll use to
 #   authenticate our requests.
-apiObj = api.CanvasLMS('some.server.com', authToken)
+apiObj = api.CanvasAPI('some.server.com', authToken)
 
 # Call the API and get the results.
 results = apiObj.allPages('accounts/123/courses')
 
 print(results)
 ```
-    
+
 ### Call from the command line
 
 Substitute "python3.2" with "python" or "python3" or whatever your Python 3 interpreter is called.  Run the following from the command line:

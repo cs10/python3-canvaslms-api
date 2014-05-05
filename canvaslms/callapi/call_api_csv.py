@@ -2,23 +2,25 @@
 
 ###############################################################################
 # python3-canvaslms-api Source Code
-# Copyright (C) 2013 Lumen LLC. 
-# 
+# Copyright (C) 2013 Lumen LLC.
+#
 # This file is part of the python3-canvaslms-api module Source Code.
-# 
+#
 # python3-canvaslms-api is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # python3-canvaslms-api is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU Affero General Public License
 # along with python3-canvaslms-api. If not, see <http://www.gnu.org/licenses/>.
 ###############################################################################
+import sys
+sys.path.append('/Volumes/Michael/Users/Michael/Dropbox/Projects/canvaslms')
 
 import collections
 import csv
@@ -46,7 +48,7 @@ The program generates an absolute URL for the API call, calls it, converts the r
     if len(sys.argv) == 1:
         printUsage()
         return
-    
+
     # Pull the command line arguments into variables.
     tokenFilePath = sys.argv[1]
     server = sys.argv[2]
@@ -63,7 +65,7 @@ Call allPages with the appropriate parameters to get all results from the reques
 
     token = api.getAuthTokenFromFile(tokenFilePath)
     apiObj = api.CanvasAPI(defaultServer=server, defaultAuthToken=token)
-    
+
     result = apiObj.allPages(apiEndpoint)
 
     # Go through each dict object and look for arrays and dicts.
@@ -115,5 +117,5 @@ Call allPages with the appropriate parameters to get all results from the reques
 def printUsage():
     print("Usage: api_call_csv.py 'path to OAuth token file' 'server' 'api endpoint'")
 
-    
+
 if __name__ == '__main__': main()
